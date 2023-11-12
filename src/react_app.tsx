@@ -85,11 +85,15 @@ export function Explanation(): JSX.Element {
                 the number of items in one of two list data structures.
             </div>
             <div className="text-base">
-                Clicking the insert and remove buttons inserts or
-                removes an item from the list.
+                Clicking the insert and remove buttons inserts or removes an item
+                from the list.
             </div>
             <div className="text-base">
                 Clicking the move button moves an item from one list to the other.
+            </div>
+            <div className="text-base">
+                In this case, the items in the lists are just empty strings, but they
+                can be complex objects, maps, or other lists.
             </div>
         </div>
     );
