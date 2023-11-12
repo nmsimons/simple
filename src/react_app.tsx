@@ -35,7 +35,7 @@ export function ReactApp(props: {
 export function ItemCount(props: { list: ListOfStrings }): JSX.Element {
     // Show the length of the list
     return (
-        <div className="flex flex-col justify-center bg-black w-24 h-24 rounded-full">
+        <div className="flex flex-col justify-center bg-black w-24 h-24 rounded-full shadow-md">
             <div className="text-center text-4xl font-extrabold bg-transparent text-white">
                 {props.list.length}
             </div>
@@ -76,7 +76,7 @@ export function MoveButton(props: {
 export function Explanation(): JSX.Element {
     return (
         <div className="flex flex-col max-w-sm gap-4 justify-left my-8">
-            <div className="text-xl bg-black text-white p-2 rounded">
+            <div className="text-xl bg-black text-white p-2 rounded shadow-md">
                 Copy the full URL to another browser tab or send it to someone to see
                 that the data is synched between clients.
             </div>
