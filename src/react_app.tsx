@@ -76,7 +76,7 @@ export function MoveButton(props: {
 export function Explanation(): JSX.Element {
     return (
         <div className="flex flex-col max-w-sm gap-4 justify-left my-8">
-            <div className="text-xl bg-black text-white p-2 rounded shadow-md">
+            <div className="text-xl bg-black text-white p-4 rounded shadow-md">
                 Copy the full URL to another browser tab or send it to someone to see
                 that the data is synched between clients.
             </div>
