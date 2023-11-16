@@ -76,10 +76,10 @@ export function MoveButton(props: {
 export function Explanation(): JSX.Element {
     return (
         <div className="flex flex-col max-w-sm gap-4 justify-left my-8">
-            <div className="text-xl bg-black text-white p-4 rounded shadow-md">
+            <BlackBox>
                 Copy the full URL to another browser tab or send it to someone to see
                 that the data is synched between clients.
-            </div>
+            </BlackBox>
             <div className="text-base">
                 This is a simple demonstration of Fluid Framework. The circles show
                 the number of items in one of two list data structures.
@@ -95,6 +95,34 @@ export function Explanation(): JSX.Element {
                 In this case, the items in the lists are just empty strings, but they
                 can be complex objects, maps, or other lists.
             </div>
+            <BlackBox>
+                Here are some other demos...
+                <DemoLink href="https://hello.fluid-demo.com">
+                    Say hello to Fluid Framework
+                </DemoLink>
+                <DemoLink href="https://pop.fluid-demo.com">
+                    Explore recursive circles
+                </DemoLink>
+                <DemoLink href="https://brainstorm.fluid-demo.com">
+                    Brainstorm your ideas
+                </DemoLink>
+            </BlackBox>
+        </div>
+    );
+}
+
+export function BlackBox(props: { children: ReactNode }): JSX.Element {
+    return (
+        <div className="text-xl bg-black text-white p-4 rounded shadow-md">
+            {props.children}
+        </div>
+    );
+}
+
+export function DemoLink(props: { href: string; children: ReactNode }): JSX.Element {
+    return (
+        <div className="text-xl pt-2 text-blue-300 hover:text-white hover:underline">
+            <a href={props.href}>{props.children}</a>
         </div>
     );
 }
