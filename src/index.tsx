@@ -45,8 +45,7 @@ async function main() {
     // interactive immediately.
     root.render(
         <ReactApp
-            data={appData}
-            container={container}            
+            data={appData}                       
         />
     );    
 

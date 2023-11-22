@@ -11,7 +11,6 @@ export const listOfStrings = sb.list(sb.string);
 export const app = sb.object('app', {    
     left: listOfStrings,
     right: listOfStrings,
-
 });
 
 export type App = TypedNode<typeof app>;

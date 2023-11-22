@@ -1,12 +1,10 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { TreeView } from '@fluid-experimental/tree2';
 import { App, ListOfStrings } from './schema';
-import { IFluidContainer } from 'fluid-framework';
 import { Tree } from '@fluid-experimental/tree2';
 
 export function ReactApp(props: {
-    data: TreeView<App>;
-    container: IFluidContainer;
+    data: TreeView<App>;    
 }): JSX.Element {
     const [invalidations, setInvalidations] = useState(0);
 
