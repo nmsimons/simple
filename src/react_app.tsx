@@ -44,7 +44,7 @@ export function ItemCount(props: { list: ListOfStrings }): JSX.Element {
 export function InsertButton(props: { list: ListOfStrings }): JSX.Element {
     const handleClick = () => {
         // Add an item to the beginning of the list
-        props.list.insertAtStart(['']);
+        props.list.insertAtStart('');
     };
 
     return <Button handleClick={handleClick}>Insert</Button>;

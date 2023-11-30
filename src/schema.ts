@@ -1,28 +1,21 @@
-import {
-    AllowedUpdateType,
-    TypedNode,
-    SchemaBuilder,
-    buildTreeConfiguration,
-} from '@fluid-experimental/tree2';
+import { TreeConfiguration, SchemaFactory } from "@fluid-experimental/tree2";
+import { NodeFromSchema } from "@fluid-experimental/tree2/dist/class-tree";
 
-const sb = new SchemaBuilder({ scope: 'd302b84c-75f6-4ecd-9663-524f467013e3' });
+const sb = new SchemaFactory('d302b84c-75f6-4ecd-9663-524f467013e3');
 
-export const listOfStrings = sb.list(sb.string);
-export const app = sb.object('app', {    
-    left: listOfStrings,
-    right: listOfStrings,
-});
+export const ListOfStrings = sb.list(sb.string);
 
-export type App = TypedNode<typeof app>;
-export type ListOfStrings = TypedNode<typeof listOfStrings>;
+export class App extends sb.object('App', {    
+    left: ListOfStrings,
+    right: ListOfStrings
+}) {}
 
-export const appSchema = sb.intoSchema(app);
+export type ListOfStrings = NodeFromSchema<typeof ListOfStrings>;
 
-export const appSchemaConfig = buildTreeConfiguration({
-    schema: appSchema,
-    initialTree: {        
-        left: {"":[]},
-        right: {"":[]}
-    },
-    allowedSchemaModifications: AllowedUpdateType.SchemaCompatible,
-});
+export const treeConfiguration = new TreeConfiguration(
+    App,
+    () => new App({        
+        left: [],
+        right: []
+    }),    
+)
