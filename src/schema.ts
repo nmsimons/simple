@@ -1,5 +1,4 @@
-import { TreeConfiguration, SchemaFactory } from "@fluid-experimental/tree2";
-import { NodeFromSchema } from "@fluid-experimental/tree2/dist/class-tree";
+import { TreeConfiguration, SchemaFactory, NodeFromSchema } from "@fluid-experimental/tree2";
 
 const sb = new SchemaFactory('d302b84c-75f6-4ecd-9663-524f467013e3');
 
