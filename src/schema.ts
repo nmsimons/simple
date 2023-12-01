@@ -1,15 +1,14 @@
 import { TreeConfiguration, SchemaFactory, NodeFromSchema } from "@fluid-experimental/tree2";
 
-const sb = new SchemaFactory('d302b84c-75f6-4ecd-9663-524f467013e3');
+const sf = new SchemaFactory('d302b84c-75f6-4ecd-9663-524f467013e3');
 
-export const ListOfStrings = sb.list(sb.string);
+export const ListOfStrings = sf.list(sf.string);
+export type ListOfStrings = NodeFromSchema<typeof ListOfStrings>;
 
-export class App extends sb.object('App', {    
+export class App extends sf.object('App', {    
     left: ListOfStrings,
     right: ListOfStrings
 }) {}
-
-export type ListOfStrings = NodeFromSchema<typeof ListOfStrings>;
 
 export const treeConfiguration = new TreeConfiguration(
     App,
