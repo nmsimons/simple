@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { TreeView } from '@fluid-experimental/tree2';
-import { App } from './schema';
+import { App, Container } from './schema';
 import { Tree } from '@fluid-experimental/tree2';
 
 export function ReactApp(props: { data: TreeView<App> }): JSX.Element {
@@ -20,8 +20,8 @@ export function ReactApp(props: { data: TreeView<App> }): JSX.Element {
     return (
         <div className="flex flex-col gap-3 items-center justify-center content-center m-6">
             <div className="flex flex-row gap-3 justify-center flex-wrap w-full h-full">
-                <ListGroup target={"left"} destination={"right"} app={app} />
-                <ListGroup target={"right"} destination={"left"} app={app} />
+                <ListGroup target={app.left} destination={app.right} />
+                <ListGroup target={app.right} destination={app.left} />
             </div>
             <Explanation />
         </div>
@@ -29,51 +29,47 @@ export function ReactApp(props: { data: TreeView<App> }): JSX.Element {
 }
 
 export function ItemCount(props: {
-    target: 'left' | 'right';
-    app: App;
+    target: Container;    
 }): JSX.Element {
     // Show the length of the list
     return (
         <div className="flex flex-col justify-center bg-black w-24 h-24 rounded-full shadow-md">
             <div className="text-center text-4xl font-extrabold bg-transparent text-white">
-                {props.app[props.target].length}
+                {props.target.items.length}
             </div>
         </div>
     );
 }
 
 export function InsertButton(props: {
-    target: 'left' | 'right';
-    app: App;
+    target: Container;    
 }): JSX.Element {
     const handleClick = () => {
         // Add an item to the beginning of the list
-        props.app.insert(props.target);
+        props.target.insert();
     };
 
     return <Button handleClick={handleClick}>Insert</Button>;
 }
 
 export function RemoveButton(props: {
-    target: 'left' | 'right';
-    app: App;
+    target: Container;    
 }): JSX.Element {
     const handleClick = () => {
         // Remove the first item in the list if the list is not empty
-        props.app.remove(props.target);
+        props.target.remove();
     };
 
     return <Button handleClick={handleClick}>Remove</Button>;
 }
 
 export function MoveButton(props: {
-    target: 'left' | 'right';
-    destination: 'left' | 'right';
-    app: App;
+    target: Container;
+    destination: Container;    
 }): JSX.Element {
     const handleClick = () => {
         // Moves the first item in the list to the start of the destination list
-        props.app.move(props.target, props.destination);
+        props.destination.move(props.target);
     };
 
     return <Button handleClick={handleClick}>Move</Button>;
@@ -134,22 +130,20 @@ export function DemoLink(props: { href: string; children: ReactNode }): JSX.Elem
 }
 
 export function ListGroup(props: {
-    target: 'left' | 'right';
-    destination: 'left' | 'right';
-    app: App;
+    target: Container;
+    destination: Container;    
 }): JSX.Element {
     return (
         <div className="flex flex-col gap-3 justify-center content-center m-6">
             <div className="flex flex-row gap-3 justify-center content-center ">
-                <ItemCount target={props.target} app={props.app} />
+                <ItemCount target={props.target} />
             </div>
             <div className="flex flex-row gap-3 justify-center content-center ">
-                <InsertButton target={props.target} app={props.app} />
-                <RemoveButton target={props.target} app={props.app} />
+                <InsertButton target={props.target} />
+                <RemoveButton target={props.target} />
                 <MoveButton
                     target={props.target}
-                    destination={props.destination}
-                    app={props.app}
+                    destination={props.destination}                    
                 />
             </div>
         </div>
