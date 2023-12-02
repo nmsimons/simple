@@ -1,7 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import { TreeView } from '@fluid-experimental/tree2';
+import { TreeView, Tree } from '@fluid-experimental/tree2';
 import { App, Container } from './schema';
-import { Tree } from '@fluid-experimental/tree2';
 
 export function ReactApp(props: { data: TreeView<App> }): JSX.Element {
     const [invalidations, setInvalidations] = useState(0);
@@ -15,7 +14,7 @@ export function ReactApp(props: { data: TreeView<App> }): JSX.Element {
             setInvalidations(invalidations + Math.random());
         });
         return unsubscribe;
-    }, []);
+    }, []);    
 
     return (
         <div className="flex flex-col gap-3 items-center justify-center content-center m-6">
