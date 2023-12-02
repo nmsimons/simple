@@ -20,8 +20,12 @@ export class App extends sf.object('App', {
     public insert(target: "left" | "right") {
         this[target].insertAtStart('');
     }
-}    
+}
 
+// Specify to root type - in this case the only type: App.
+// Specify the initial state of the tree if this is a new tree.
+// This object is passed into the SharedTree via the schematize
+// method.
 export const treeConfiguration = new TreeConfiguration(
     App,
     () => new App({        

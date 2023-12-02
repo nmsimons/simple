@@ -21,14 +21,14 @@ async function main() {
     // a new container.
     let containerId = location.hash.substring(1);
 
-    // Initialize Fluid Container
+    // Initialize Fluid Container - this will either make a new container or load an existing one
     const { container } = await loadFluidData(containerId, containerSchema);
 
     // Initialize the SharedTree Data Structure
     const appData = (container.initialObjects.appData as ITree).schematize(
-        treeConfiguration
+        treeConfiguration // This is defined in schema.ts
     );
-    
+
     // Initialize debugging tools
     initializeDevtools({
         logger: devtoolsLogger,
@@ -43,18 +43,15 @@ async function main() {
     // Render the app - note we attach new containers after render so
     // the app renders instantly on create new flow. The app will be
     // interactive immediately.
-    root.render(
-        <ReactApp
-            data={appData}                       
-        />
-    );    
+    root.render(<ReactApp data={appData} />);
 
     // If the app is in a `createNew` state - no containerId, and the container is detached, we attach the container.
     // This uploads the container to the service and connects to the collaboration session.
     if (containerId.length == 0) {
         containerId = await container.attach();
 
-        // The newly attached container is given a unique ID that can be used to access the container in another session
+        // The newly attached container is given a unique ID that can be used to access the container in another session.
+        // This adds that id to the url.
         location.hash = containerId;
     }
 }
