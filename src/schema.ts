@@ -1,4 +1,4 @@
-import { TreeConfiguration, SchemaFactory } from "@fluid-experimental/tree2";
+import { TreeConfiguration, SchemaFactory } from '@fluid-experimental/tree2';
 
 const sf = new SchemaFactory('d302b84c-75f6-4ecd-9663-524f467013e3');
 
@@ -7,7 +7,7 @@ export class List extends sf.list('List', sf.string) {
     public move(source: List) {
         if (source.length > 0) this.moveToStart(0, source);
     }
-    
+
     // Remove the first item in the list if the list is not empty
     public remove() {
         if (this.length > 0) this.removeAt(0);
@@ -19,19 +19,20 @@ export class List extends sf.list('List', sf.string) {
     }
 }
 
-export class App extends sf.object('App', {    
+export class App extends sf.object('App', {
     left: List,
-    right: List
+    right: List,
 }) {}
 
-// Specify the root type - in this case the only type: App.
-// Specify the initial state of the tree if this is a new tree.
+// Specify the root type - App.
+// Specify the initial state of the tree which is used if this is a new tree.
 // This object is passed into the SharedTree via the schematize
 // method.
 export const treeConfiguration = new TreeConfiguration(
     App,
-    () => new App({        
-        left: [],
-        right: []
-    }),    
-)
+    () =>
+        new App({
+            left: [],
+            right: [],
+        })
+);
