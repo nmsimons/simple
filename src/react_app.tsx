@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { TreeView, Tree } from '@fluid-experimental/tree2';
-import { App, Container } from './schema';
+import { App, List } from './schema';
 
 export function ReactApp(props: { data: TreeView<App> }): JSX.Element {
     const [invalidations, setInvalidations] = useState(0);
@@ -28,20 +28,20 @@ export function ReactApp(props: { data: TreeView<App> }): JSX.Element {
 }
 
 export function ItemCount(props: {
-    target: Container;    
+    target: List;    
 }): JSX.Element {
     // Show the length of the list
     return (
         <div className="flex flex-col justify-center bg-black w-24 h-24 rounded-full shadow-md">
             <div className="text-center text-4xl font-extrabold bg-transparent text-white">
-                {props.target.items.length}
+                {props.target.length}
             </div>
         </div>
     );
 }
 
 export function InsertButton(props: {
-    target: Container;    
+    target: List;    
 }): JSX.Element {
     const handleClick = () => {
         // Add an item to the beginning of the list
@@ -52,7 +52,7 @@ export function InsertButton(props: {
 }
 
 export function RemoveButton(props: {
-    target: Container;    
+    target: List;    
 }): JSX.Element {
     const handleClick = () => {
         // Remove the first item in the list if the list is not empty
@@ -63,8 +63,8 @@ export function RemoveButton(props: {
 }
 
 export function MoveButton(props: {
-    target: Container;
-    destination: Container;    
+    target: List;
+    destination: List;    
 }): JSX.Element {
     const handleClick = () => {
         // Moves the first item in the list to the start of the destination list
@@ -129,8 +129,8 @@ export function DemoLink(props: { href: string; children: ReactNode }): JSX.Elem
 }
 
 export function ListGroup(props: {
-    target: Container;
-    destination: Container;    
+    target: List;
+    destination: List;    
 }): JSX.Element {
     return (
         <div className="flex flex-col gap-3 justify-center content-center m-6">
