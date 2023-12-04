@@ -4,17 +4,17 @@ const sf = new SchemaFactory('d302b84c-75f6-4ecd-9663-524f467013e3');
 
 export class StringList extends sf.list('List', sf.string) {
     // Moves the first item in the source list to the start of this list
-    public move(source: StringList) {
+    public moveToSourceList(source: StringList) {
         if (source.length > 0) this.moveToStart(0, source);
     }
 
     // Remove the first item in the list if the list is not empty
-    public remove() {
+    public removeFirst() {
         if (this.length > 0) this.removeAt(0);
     }
 
     // Add an item to the beginning of the list
-    public insert() {
+    public insertNew() {
         this.insertAtStart('');
     }
 }

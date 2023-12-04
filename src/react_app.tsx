@@ -45,7 +45,7 @@ export function InsertButton(props: {
 }): JSX.Element {
     const handleClick = () => {
         // Add an item to the beginning of the list
-        props.target.insert();
+        props.target.insertNew();
     };
 
     return <Button handleClick={handleClick}>Insert</Button>;
@@ -56,7 +56,7 @@ export function RemoveButton(props: {
 }): JSX.Element {
     const handleClick = () => {
         // Remove the first item in the list if the list is not empty
-        props.target.remove();
+        props.target.removeFirst();
     };
 
     return <Button handleClick={handleClick}>Remove</Button>;
@@ -68,7 +68,7 @@ export function MoveButton(props: {
 }): JSX.Element {
     const handleClick = () => {
         // Moves the first item in the list to the start of the destination list
-        props.destination.move(props.target);
+        props.destination.moveToSourceList(props.target);
     };
 
     return <Button handleClick={handleClick}>Move</Button>;
