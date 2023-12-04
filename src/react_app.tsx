@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { TreeView, Tree } from '@fluid-experimental/tree2';
-import { App, List } from './schema';
+import { App, StringList } from './schema';
 
 export function ReactApp(props: { data: TreeView<App> }): JSX.Element {
     const [invalidations, setInvalidations] = useState(0);
@@ -28,7 +28,7 @@ export function ReactApp(props: { data: TreeView<App> }): JSX.Element {
 }
 
 export function ItemCount(props: {
-    target: List;    
+    target: StringList;    
 }): JSX.Element {
     // Show the length of the list
     return (
@@ -41,7 +41,7 @@ export function ItemCount(props: {
 }
 
 export function InsertButton(props: {
-    target: List;    
+    target: StringList;    
 }): JSX.Element {
     const handleClick = () => {
         // Add an item to the beginning of the list
@@ -52,7 +52,7 @@ export function InsertButton(props: {
 }
 
 export function RemoveButton(props: {
-    target: List;    
+    target: StringList;    
 }): JSX.Element {
     const handleClick = () => {
         // Remove the first item in the list if the list is not empty
@@ -63,8 +63,8 @@ export function RemoveButton(props: {
 }
 
 export function MoveButton(props: {
-    target: List;
-    destination: List;    
+    target: StringList;
+    destination: StringList;    
 }): JSX.Element {
     const handleClick = () => {
         // Moves the first item in the list to the start of the destination list
@@ -129,8 +129,8 @@ export function DemoLink(props: { href: string; children: ReactNode }): JSX.Elem
 }
 
 export function ListGroup(props: {
-    target: List;
-    destination: List;    
+    target: StringList;
+    destination: StringList;    
 }): JSX.Element {
     return (
         <div className="flex flex-col gap-3 justify-center content-center m-6">
