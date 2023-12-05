@@ -2,7 +2,7 @@ import { TreeConfiguration, SchemaFactory } from '@fluid-experimental/tree2';
 
 const sf = new SchemaFactory('d302b84c-75f6-4ecd-9663-524f467013e3');
 
-export class StringList extends sf.list('List', sf.string) {
+export class StringList extends sf.list('StringList', sf.string) {
     // Moves the first item in the source list to the start of this list
     public moveToSourceList(source: StringList) {
         if (source.length > 0) this.moveToStart(0, source);

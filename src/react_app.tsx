@@ -27,6 +27,27 @@ export function ReactApp(props: { data: TreeView<App> }): JSX.Element {
     );
 }
 
+export function ListGroup(props: {
+    target: StringList;
+    destination: StringList;    
+}): JSX.Element {
+    return (
+        <div className="flex flex-col gap-3 justify-center content-center m-6">
+            <div className="flex flex-row gap-3 justify-center content-center ">
+                <ItemCount target={props.target} />
+            </div>
+            <div className="flex flex-row gap-3 justify-center content-center ">
+                <InsertButton target={props.target} />
+                <RemoveButton target={props.target} />
+                <MoveButton
+                    target={props.target}
+                    destination={props.destination}                    
+                />
+            </div>
+        </div>
+    );
+}
+
 export function ItemCount(props: {
     target: StringList;    
 }): JSX.Element {
@@ -72,6 +93,20 @@ export function MoveButton(props: {
     };
 
     return <Button handleClick={handleClick}>Move</Button>;
+}
+
+export function Button(props: {
+    children: ReactNode;
+    handleClick: () => void;
+}): JSX.Element {
+    return (
+        <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-24"
+            onClick={() => props.handleClick()}
+        >
+            {props.children}
+        </button>
+    );
 }
 
 export function Explanation(): JSX.Element {
@@ -125,40 +160,5 @@ export function DemoLink(props: { href: string; children: ReactNode }): JSX.Elem
         <div className="text-xl pt-2 text-blue-300 hover:text-white hover:underline">
             <a href={props.href}>{props.children}</a>
         </div>
-    );
-}
-
-export function ListGroup(props: {
-    target: StringList;
-    destination: StringList;    
-}): JSX.Element {
-    return (
-        <div className="flex flex-col gap-3 justify-center content-center m-6">
-            <div className="flex flex-row gap-3 justify-center content-center ">
-                <ItemCount target={props.target} />
-            </div>
-            <div className="flex flex-row gap-3 justify-center content-center ">
-                <InsertButton target={props.target} />
-                <RemoveButton target={props.target} />
-                <MoveButton
-                    target={props.target}
-                    destination={props.destination}                    
-                />
-            </div>
-        </div>
-    );
-}
-
-export function Button(props: {
-    children: ReactNode;
-    handleClick: () => void;
-}): JSX.Element {
-    return (
-        <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-24"
-            onClick={() => props.handleClick()}
-        >
-            {props.children}
-        </button>
     );
 }
