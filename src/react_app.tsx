@@ -100,15 +100,15 @@ export function Explanation(): JSX.Element {
             </BlackBox>
             <div className="text-base">
                 This is a simple demonstration of Fluid Framework. The circle shows
-                the number of items in a list data structure.
+                the number of items in a distributed array.
             </div>
             <div className="text-base">
                 Clicking the insert and remove buttons inserts or removes an item
-                from the list.
+                from the array.
             </div>            
             <div className="text-base">
-                In this case, the items in the lists are just empty strings, but they
-                can be complex objects, maps, or other lists.
+                In this case, the items in the array are just empty strings, but they
+                could be complex objects, maps, or other arrays.
             </div>
             <BlackBox>
                 Here are some other demos...
