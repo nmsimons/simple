@@ -3,11 +3,6 @@ import { TreeConfiguration, SchemaFactory } from '@fluid-experimental/tree2';
 const sf = new SchemaFactory('d302b84c-75f6-4ecd-9663-524f467013e3');
 
 export class StringList extends sf.list('StringList', sf.string) {
-    // Moves the first item in the source list to the start of this list
-    public moveToSourceList(source: StringList) {
-        if (source.length > 0) this.moveToStart(0, source);
-    }
-
     // Remove the first item in the list if the list is not empty
     public removeFirst() {
         if (this.length > 0) this.removeAt(0);
@@ -20,8 +15,7 @@ export class StringList extends sf.list('StringList', sf.string) {
 }
 
 export class App extends sf.object('App', {
-    left: StringList,
-    right: StringList,
+    stringList: StringList,    
 }) {}
 
 // Specify the root type - App.
@@ -32,7 +26,6 @@ export const treeConfiguration = new TreeConfiguration(
     App,
     () =>
         new App({
-            left: [],
-            right: [],
+            stringList: []
         })
 );

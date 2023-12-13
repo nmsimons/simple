@@ -19,8 +19,7 @@ export function ReactApp(props: { data: TreeView<App> }): JSX.Element {
     return (
         <div className="flex flex-col gap-3 items-center justify-center content-center m-6">
             <div className="flex flex-row gap-3 justify-center flex-wrap w-full h-full">
-                <ListGroup target={app.left} destination={app.right} />
-                <ListGroup target={app.right} destination={app.left} />
+                <ListGroup list={app.stringList} />                
             </div>
             <Explanation />
         </div>
@@ -28,21 +27,16 @@ export function ReactApp(props: { data: TreeView<App> }): JSX.Element {
 }
 
 export function ListGroup(props: {
-    target: StringList;
-    destination: StringList;    
+    list: StringList;        
 }): JSX.Element {
     return (
         <div className="flex flex-col gap-3 justify-center content-center m-6">
             <div className="flex flex-row gap-3 justify-center content-center ">
-                <ItemCount target={props.target} />
+                <ItemCount target={props.list} />
             </div>
             <div className="flex flex-row gap-3 justify-center content-center ">
-                <InsertButton target={props.target} />
-                <RemoveButton target={props.target} />
-                <MoveButton
-                    target={props.target}
-                    destination={props.destination}                    
-                />
+                <InsertButton target={props.list} />
+                <RemoveButton target={props.list} />                
             </div>
         </div>
     );
@@ -83,18 +77,6 @@ export function RemoveButton(props: {
     return <Button handleClick={handleClick}>Remove</Button>;
 }
 
-export function MoveButton(props: {
-    target: StringList;
-    destination: StringList;    
-}): JSX.Element {
-    const handleClick = () => {
-        // Moves the first item in the list to the start of the destination list
-        props.destination.moveToSourceList(props.target);
-    };
-
-    return <Button handleClick={handleClick}>Move</Button>;
-}
-
 export function Button(props: {
     children: ReactNode;
     handleClick: () => void;
@@ -117,16 +99,13 @@ export function Explanation(): JSX.Element {
                 that the data is synched between clients.
             </BlackBox>
             <div className="text-base">
-                This is a simple demonstration of Fluid Framework. The circles show
-                the number of items in one of two list data structures.
+                This is a simple demonstration of Fluid Framework. The circle shows
+                the number of items in a list data structure.
             </div>
             <div className="text-base">
                 Clicking the insert and remove buttons inserts or removes an item
                 from the list.
-            </div>
-            <div className="text-base">
-                Clicking the move button moves an item from one list to the other.
-            </div>
+            </div>            
             <div className="text-base">
                 In this case, the items in the lists are just empty strings, but they
                 can be complex objects, maps, or other lists.
