@@ -1,7 +1,10 @@
 import { TreeConfiguration, SchemaFactory } from 'fluid-framework';
 
+// Define a schema factory that is used to generate classes for the schema
 const sf = new SchemaFactory('d302b84c-75f6-4ecd-9663-524f467013e3');
 
+// Define a class that is an array of strings
+// This class is used to create an array in the SharedTree
 export class StringArray extends sf.array('StringArray', sf.string) {
     // Remove the first item in the list if the list is not empty
     public removeFirst() {
@@ -14,6 +17,7 @@ export class StringArray extends sf.array('StringArray', sf.string) {
     }
 }
 
+// Define a class to be the root of the app
 export class App extends sf.object('App', {
     stringArray: StringArray,    
 }) {}
