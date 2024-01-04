@@ -52,7 +52,7 @@ async function start() {
 
         // The newly attached container is given a unique ID that can be used to access the container in another session.
         // This adds that id to the url.
-        location.hash = containerId;
+        history.replaceState(undefined, "", "#" + containerId);
     }
 }
 
