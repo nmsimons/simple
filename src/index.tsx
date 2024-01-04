@@ -4,12 +4,12 @@ import { createRoot } from 'react-dom/client';
 import { loadFluidData, containerSchema } from './infra/fluid';
 import { initializeDevtools } from '@fluidframework/devtools';
 import { devtoolsLogger } from './infra/clientProps';
-import { ITree } from '@fluidframework/tree';
+import { ITree } from 'fluid-framework';
 import { treeConfiguration } from './schema';
 import './output.css';
 import { ReactApp } from './react_app';
 
-async function main() {
+async function start() {
     // create the root element for React
     const app = document.createElement('div');
     app.id = 'app';
@@ -56,4 +56,4 @@ async function main() {
     }
 }
 
-export default main();
+start().catch((error) => console.error(error));

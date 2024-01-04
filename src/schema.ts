@@ -1,4 +1,4 @@
-import { TreeConfiguration, SchemaFactory } from '@fluidframework/tree';
+import { TreeConfiguration, SchemaFactory } from 'fluid-framework';
 
 const sf = new SchemaFactory('d302b84c-75f6-4ecd-9663-524f467013e3');
 

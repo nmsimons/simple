@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import { TreeView, Tree } from '@fluidframework/tree';
+import { TreeView, Tree } from 'fluid-framework';
 import { App, StringArray } from './schema';
 
 export function ReactApp(props: { data: TreeView<App> }): JSX.Element {
