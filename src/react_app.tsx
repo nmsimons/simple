@@ -109,19 +109,7 @@ export function Explanation(): JSX.Element {
             <div className="text-base">
                 In this case, the items in the array are just empty strings, but they
                 could be complex objects, maps, or other arrays.
-            </div>
-            <BlackBox>
-                Here are some other demos...
-                <DemoLink href="https://hello.fluid-demo.com">
-                    Say hello to Fluid Framework
-                </DemoLink>
-                <DemoLink href="https://pop.fluid-demo.com">
-                    Explore recursive circles
-                </DemoLink>
-                <DemoLink href="https://brainstorm.fluid-demo.com">
-                    Brainstorm your ideas
-                </DemoLink>
-            </BlackBox>
+            </div>            
         </div>
     );
 }
